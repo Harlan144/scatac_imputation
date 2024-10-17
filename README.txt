@@ -1,4 +1,4 @@
-This workflow uses STITCH to impute genotypes based on next gen sequencing data (in particular, ChIP-seq data). It allows multiple bam files from a given individual to be combined prior to imputation to increase imputation accuracy. Follow these steps to run it:
+This workflow uses STITCH to impute genotypes based on next gen sequencing data (in particular, scATAC-seq data). It allows multiple bam files from a given individual to be combined prior to imputation to increase imputation accuracy. Follow these steps to run it:
 
 1. create the necessary conda environment from impute.env.yml. (ie, 'conda env create --file impute.env.yml')
 2. update the config.yaml file if needed (this allows you to specify the reference genome and some parameters for STITCH). Usually nothing needs to be changed here.
@@ -41,10 +41,10 @@ HRC.r1-1.GRCh37.wgs.mac5.sites.20.EUR_AF01.posfile
 4. update the metasheet.csv file. This is file contains comma-separated columns with the bam location in the first column and the individual the bam corresponds to in the second column. For example:
 
 bam,individual
-chips/align/InputV16/InputV16_unique.sorted.dedup.bam,VCaP16
-chips/align/InputVca/InputVca_unique.sorted.dedup.bam,VCaP
-chips/align/R1V16K27/R1V16K27_unique.sorted.dedup.bam,VCaP16
-chips/align/R1VCK27/R1VCK27_unique.sorted.dedup.bam,VCaP
+path/to/cluster_0_atac.bam,indiv_0
+path/to/cluster_1_atac.bam,indiv_1
+path/to/cluster_2_atac.bam,indiv_2
+path/to/cluster_3_atac.bam,indiv_3
 
 5. activate the conda environment ('conda activate impute')
 6. you can submit the workflow to slurm using submit.sh. Or, if not using slurm, run the workflow as, for example, 'snakemake -s impute.snakefile -pr all 
